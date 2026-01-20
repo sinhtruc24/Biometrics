@@ -4,6 +4,7 @@ import tensorflow as tf
 import tf_keras as keras
 import cv2
 from app.models.api_models import VerificationResponse
+from services.face_alignment_service import FaceAlignmentService
 import logging
 
 logger = logging.getLogger(__name__)
@@ -13,6 +14,13 @@ class FaceVerificationService:
         self.threshold = threshold
         self.model = None
         self.model_loaded = False
+        
+        # Initialize alignment service
+        try:
+            self.alignment_service = FaceAlignmentService()
+        except Exception as e:
+            logger.error(f"Failed to initialize FaceAlignmentService: {str(e)}")
+            raise
 
         if model_path is None:
             model_path = os.path.join(os.path.dirname(__file__), "../../..", "Model", "ghostfacenet_fixed.h5")
@@ -46,22 +54,36 @@ class FaceVerificationService:
                 raise ValueError("Failed to decode image")
 
             img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
-            img_resized = cv2.resize(img_rgb, (112, 112))
-
-            img_tensor = (img_resized.astype(np.float32) - 127.5) / 128.0
+            
+            # 1. Face Detection
+            faces = self.alignment_service.detect_faces(img_rgb)
+            if not faces:
+                raise ValueError("No face detected in image")
+            
+            # Select largest face
+            # MTCNN returns 'box': [x, y, w, h]
+            largest_face = max(faces, key=lambda f: f['box'][2] * f['box'][3])
+            
+            # 2. Alignment
+            img_aligned = self.alignment_service.align_face(img_rgb, largest_face['keypoints'])
+            
+            # 3. Normalization (Target: 112x112, RGB, -1..1)
+            # img_aligned is already 112x112 from align_face
+            img_tensor = (img_aligned.astype(np.float32) - 127.5) / 128.0
             img_tensor = np.expand_dims(img_tensor, axis=0)
 
             return img_tensor
 
         except Exception as e:
             logger.error(f"Error preprocessing image: {str(e)}")
-            raise ValueError(f"Invalid image format: {str(e)}")
+            raise
 
     def verify_faces(self, image_a_bytes: bytes, image_b_bytes: bytes) -> VerificationResponse:
         if not self.model_loaded:
             raise RuntimeError("Model not loaded")
 
         try:
+            # Preprocess includes detection and alignment now
             img_a = self._preprocess_image(image_a_bytes)
             img_b = self._preprocess_image(image_b_bytes)
 

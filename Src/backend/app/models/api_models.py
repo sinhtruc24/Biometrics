@@ -13,7 +13,7 @@ class VerificationResponse(BaseModel):
     inference_time: Optional[float] = None
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "similarity": 0.85,
                 "is_same_person": True,
@@ -98,7 +98,7 @@ class DatabaseStatsResponse(BaseModel):
     """Response model for database statistics"""
     success: bool
     stats: Dict[str, Any]
-    model_loaded: bool
+    is_model_loaded: bool
     error: Optional[str] = None
 
 class VerifyWithDatabaseRequest(BaseModel):
