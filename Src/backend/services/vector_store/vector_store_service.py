@@ -26,7 +26,7 @@ class VectorStoreService:
 
         # Set default vector store path
         if vector_store_path is None:
-            vector_store_path = os.path.join(os.path.dirname(__file__), "../../../vector_db")
+            vector_store_path = os.path.join(os.path.dirname(__file__), "../../vector_db")
 
         self.vector_store_path = os.path.abspath(vector_store_path)
 
@@ -266,7 +266,7 @@ class VectorStoreService:
             return {
                 'success': True,
                 'stats': stats,
-                'model_loaded': self.face_service.is_model_loaded()
+                'is_model_loaded': self.face_service.is_model_loaded()
             }
 
         except Exception as e:

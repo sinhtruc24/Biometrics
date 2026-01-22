@@ -1,0 +1,18 @@
+{
+  "metadata": [
+    {
+      "id": 0,
+      "name": "Ngan 98",
+      "description": "98 tuoi",
+      "additional_info": {
+        "age": 25
+      },
+      "registered_at": "2026-01-22T16:03:20.334502",
+      "embedding_index": 0
+    }
+  ],
+  "id_counter": 1,
+  "dimension": 512,
+  "total_vectors": 1,
+  "last_updated": "2026-01-22T16:03:20.340457"
+}

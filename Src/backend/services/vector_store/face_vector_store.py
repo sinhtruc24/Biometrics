@@ -32,11 +32,11 @@ class FaceVectorStore:
 
         # Set default paths relative to this file
         if index_path is None:
-            index_path = os.path.join(os.path.dirname(__file__), "../../../vector_db/faiss_index.bin")
+            index_path = os.path.join(os.path.dirname(__file__), "../../vector_db/faiss_index.bin")
         if metadata_path is None:
-            metadata_path = os.path.join(os.path.dirname(__file__), "../../../vector_db/metadata.json")
+            metadata_path = os.path.join(os.path.dirname(__file__), "../../vector_db/metadata.json")
         if embeddings_path is None:
-            embeddings_path = os.path.join(os.path.dirname(__file__), "../../../vector_db/embeddings.npy")
+            embeddings_path = os.path.join(os.path.dirname(__file__), "../../vector_db/embeddings.npy")
 
         self.index_path = os.path.abspath(index_path)
         self.metadata_path = os.path.abspath(metadata_path)
