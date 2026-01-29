@@ -1,0 +1,3 @@
+Do dataset nặng nên nhóm em xin được phép chia sẻ qua link: 
+- webface: https://www.kaggle.com/datasets/yakhyokhuja/webface-112x112
+- VN_celeb: https://www.kaggle.com/datasets/duypok/vn-celeb

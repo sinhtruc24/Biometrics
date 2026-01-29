@@ -31,6 +31,10 @@ Biometrics/
 │   │   │   └── vector_store/
 │   │   │       ├── face_vector_store.py      # FAISS vector store
 │   │   │       └── vector_store_service.py   # Service quản lý vector DB
+│   │   ├── vector_db/                 # Dữ liệu vector database (đã chuyển vào backend)
+│   │   │   ├── faiss_index.bin        # FAISS index file
+│   │   │   ├── embeddings.npy         # Face embeddings
+│   │   │   └── metadata.json          # Metadata người dùng
 │   │   ├── requirements.txt           # Python dependencies
 │   │   └── venv/                      # Python virtual environment
 │   ├── frontend/                       # Frontend (React + Vite)
@@ -42,10 +46,6 @@ Biometrics/
 │   │   │   └── styles/
 │   │   ├── package.json
 │   │   └── vite.config.ts
-│   └── vector_db/                      # Dữ liệu vector database
-│       ├── faiss_index.bin            # FAISS index file
-│       ├── embeddings.npy             # Face embeddings
-│       └── metadata.json              # Metadata người dùng
 └── README.md
 ```
 

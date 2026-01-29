@@ -1,18 +1,68 @@
 {
   "metadata": [
     {
-      "id": 0,
-      "name": "Ngan 98",
-      "description": "98 tuoi",
+      "id": 2,
+      "name": "Son",
+      "description": "25 tuoi",
       "additional_info": {
         "age": 25
       },
-      "registered_at": "2026-01-22T16:03:20.334502",
+      "registered_at": "2026-01-23T14:14:26.517607",
       "embedding_index": 0
+    },
+    {
+      "id": 3,
+      "name": "Ngan",
+      "description": "25 tuoi",
+      "additional_info": {
+        "age": 25
+      },
+      "registered_at": "2026-01-23T14:14:41.702042",
+      "embedding_index": 1
+    },
+    {
+      "id": 4,
+      "name": "Nam",
+      "description": "25 tuoi",
+      "additional_info": {
+        "age": 25
+      },
+      "registered_at": "2026-01-23T14:15:00.268556",
+      "embedding_index": 2
+    },
+    {
+      "id": 5,
+      "name": "Trang",
+      "description": "35 tuoi",
+      "additional_info": {
+        "age": 25
+      },
+      "registered_at": "2026-01-27T13:57:08.288592",
+      "embedding_index": 3
+    },
+    {
+      "id": 6,
+      "name": "trinh",
+      "description": "15 tuoi",
+      "additional_info": {
+        "age": 25
+      },
+      "registered_at": "2026-01-27T13:59:33.717212",
+      "embedding_index": 4
+    },
+    {
+      "id": 7,
+      "name": "thuy",
+      "description": "5 tuoi",
+      "additional_info": {
+        "age": 25
+      },
+      "registered_at": "2026-01-27T13:59:52.058540",
+      "embedding_index": 5
     }
   ],
-  "id_counter": 1,
+  "id_counter": 8,
   "dimension": 512,
-  "total_vectors": 1,
-  "last_updated": "2026-01-22T16:03:20.340457"
+  "total_vectors": 6,
+  "last_updated": "2026-01-27T13:59:52.059481"
 }
